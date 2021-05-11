@@ -9,6 +9,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 # def index(request):
 #     years = range(1960,2021)
@@ -154,3 +156,9 @@ def userinfo(request):
         pass
 
     return render(request, 'userinfo.html', locals())
+def logout(request):
+    auth.logout(request)
+    messages.add_message(request, messages.INFO, '成功登出了')
+    return redirect('/')
+
+
